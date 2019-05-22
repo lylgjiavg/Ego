@@ -1,0 +1,3 @@
+club\ego\passport\service\TbUserPassportService.class
+club\ego\passport\service\impl\TbUserPassportServiceImpl.class
+club\ego\passport\controller\LoginController.class

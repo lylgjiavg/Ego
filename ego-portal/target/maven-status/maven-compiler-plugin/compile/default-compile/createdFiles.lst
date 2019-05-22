@@ -1,0 +1,4 @@
+club\ego\portal\controller\IndexController.class
+club\ego\portal\controller\TbContentController.class
+club\ego\portal\service\TbContentPortalService.class
+club\ego\portal\service\impl\TbContentPortalServiceImpl.class

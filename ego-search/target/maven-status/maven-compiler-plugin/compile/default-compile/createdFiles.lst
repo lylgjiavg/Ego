@@ -1,0 +1,6 @@
+club\ego\search\service\impl\SolrSearchServiceImpl.class
+club\ego\search\service\impl\SolrInitServiceImpl.class
+club\ego\search\service\SolrInitService.class
+club\ego\search\controller\SolrInitController.class
+club\ego\search\service\SolrSearchService.class
+club\ego\search\controller\SolrSearchController.class

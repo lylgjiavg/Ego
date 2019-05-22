@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+        
+	<!-- 包扫描 -->
+	<context:component-scan base-package="club.ego.dubbo.service.impl"></context:component-scan>
+	
+	<!-- 参数文件导入 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- 数据源 -->
+	<bean id="managerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="managerDataSource"></property>
+		<property name="typeAliasesPackage" value="club.ego.pojo"></property>
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
+	</bean>
+	
+	<!-- mapper包扫描 -->
+	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="club.ego.mapper"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- service层的事务管理 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="managerDataSource"></property>
+	</bean>
+	
+	<tx:advice transaction-manager="txManager" id="txAdvice">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="java.lang.Exception"/>
+			<tx:method name="delete*" rollback-for="java.lang.Exception"/>
+			<tx:method name="update*" rollback-for="java.lang.Exception"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!--  -->
+	<aop:config>
+		<aop:pointcut expression="execution(* club.ego.dubbo.service.impl.*.*(..))" id="mypoint"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="mypoint"/>
+	</aop:config>
+	
+</beans>

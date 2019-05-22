@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+        http://code.alibabatech.com/schema/dubbo        
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="dubbo-service"/>
+	
+	<dubbo:registry address="192.168.226.200:2181" protocol="zookeeper"></dubbo:registry>
+	
+	<dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
+	
+	<!-- 
+		发布服务
+	 -->
+	<!-- 商品信息服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbItemDubboService" ref="tbItemDubboService"></dubbo:service>
+	<bean id="tbItemDubboService" class="club.ego.dubbo.service.impl.TbItemDubboServiceImpl"></bean>
+	
+	<!-- 商品菜单树状图服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbItemCatDubboService" ref="tbItemCatDubboService"></dubbo:service>
+	<bean id="tbItemCatDubboService" class="club.ego.dubbo.service.impl.TbItemCatDubboServiceImpl"></bean>
+	
+	<!-- 商品卖点服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbItemDescDubboService" ref="tbItemDescDubboService"></dubbo:service>
+	<bean id="tbItemDescDubboService" class="club.ego.dubbo.service.impl.TbItemDescDubboServiceImpl"></bean>
+	
+	<!-- 规格参数服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbItemParamDubboService" ref="tbItemParamDubboService"></dubbo:service>
+	<bean id="tbItemParamDubboService" class="club.ego.dubbo.service.impl.TbItemParamDubboServiceImpl"></bean>
+	
+	<!-- 规格数据服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbItemParamItemDubboService" ref="tbItemParamItemDubboService"></dubbo:service>
+	<bean id="tbItemParamItemDubboService" class="club.ego.dubbo.service.impl.TbItemParamItemDubboServiceImpl"></bean>
+	
+	<!-- 内容分类服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbContentCategoryDubboService" ref="tbContentCategoryDubboService"></dubbo:service>
+	<bean id="tbContentCategoryDubboService" class="club.ego.dubbo.service.impl.TbContentCategoryDubboServiceImpl"></bean>
+	
+	<!-- 内容分类数据服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbContentDubboService" ref="tbContentDubboService"></dubbo:service>
+	<bean id="tbContentDubboService" class="club.ego.dubbo.service.impl.TbContentDubboServiceImpl"></bean>
+	
+	<!-- 用户服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbUserDubboService" ref="tbUserDubboService"></dubbo:service>
+	<bean id="tbUserDubboService" class="club.ego.dubbo.service.impl.TbUserDubboServiceImpl"></bean>
+	
+	<!-- 订单服务 -->
+	<dubbo:service interface="club.ego.dubbo.service.TbOrderDubboService" ref="tbOrderDubboService"></dubbo:service>
+	<bean id="tbOrderDubboService" class="club.ego.dubbo.service.impl.TbOrderDubboServiceImpl"></bean>
+	
+	<import resource="../../application-spring.xml"/>
+        
+</beans>

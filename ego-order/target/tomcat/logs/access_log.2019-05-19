@@ -1,0 +1,10 @@
+127.0.0.1 - - [19/May/2019:10:33:47 +0800] "GET /order/order-cart.html?id=155793485382834 HTTP/1.1" 200 23108 http-bio-8086-exec-1 1699
+127.0.0.1 - - [19/May/2019:10:34:39 +0800] "GET /order/order-cart.html?id=155793485382834 HTTP/1.1" 200 24538 http-bio-8086-exec-3 111
+127.0.0.1 - - [19/May/2019:10:34:45 +0800] "GET /order/order-cart.html?id=155793485382834 HTTP/1.1" 200 24493 http-bio-8086-exec-5 31
+127.0.0.1 - - [19/May/2019:10:34:48 +0800] "POST /order/create.html HTTP/1.1" 200 7350 http-bio-8086-exec-6 278
+0:0:0:0:0:0:0:1 - - [19/May/2019:10:34:48 +0800] "GET /css/purchase.sop.css HTTP/1.1" 200 9885 http-bio-8086-exec-4 15
+0:0:0:0:0:0:0:1 - - [19/May/2019:10:34:48 +0800] "GET /js/jquery.cookie.js HTTP/1.1" 200 3121 http-bio-8086-exec-9 6
+0:0:0:0:0:0:0:1 - - [19/May/2019:10:34:48 +0800] "GET /js/base-2011.js HTTP/1.1" 200 29063 http-bio-8086-exec-8 7
+127.0.0.1 - - [19/May/2019:10:34:48 +0800] "GET /css/purchase.base.2012.css HTTP/1.1" 200 13339 http-bio-8086-exec-7 27
+127.0.0.1 - - [19/May/2019:10:34:48 +0800] "GET /images/flow.gif HTTP/1.1" 200 818 http-bio-8086-exec-3 5
+0:0:0:0:0:0:0:1 - - [19/May/2019:10:34:48 +0800] "GET /images/icon48.png HTTP/1.1" 200 391 http-bio-8086-exec-8 6
